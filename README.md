@@ -1,12 +1,17 @@
-# ijkplayer [![Build Status](https://travis-ci.org/Bilibili/ijkplayer.svg?branch=master)](https://travis-ci.org/Bilibili/ijkplayer)
+This is just forked from [bbcallen's ijkplayer](https://github.com/bbcallen/ijkplayer)
 
-Video player based on [ffplay](http://ffmpeg.org)
+Thanks to [jgfntu's branch](https://github.com/jgfntu/ijkplayer/tree/snapshort)
+
+I just implemented this project by following jgfntu's instruction.
+
+#####iOS is not yet verifed. Only work on Android.
 
 ### Download
 
-- Android:
- - Gradle
-```
+ - Android:
+ 	- Gradle
+
+
 # required
 allprojects {
     repositories {
@@ -28,9 +33,7 @@ dependencies {
     # ExoPlayer as IMediaPlayer: optional, experimental
     compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.5.1'
 }
-```
-- iOS
- - in coming...
+ 
 
 ### My Build Environment
 - Common
@@ -39,14 +42,13 @@ dependencies {
  - [NDK r10e](http://developer.android.com/tools/sdk/ndk/index.html)
  - Android Studio 2.0
  - Gradle 2.10
-- iOS
- - Xcode 7.2 (7C68)
-- [HomeBrew](http://brew.sh)
- - ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
- - brew install git
 
 ### Latest Changes
-- [NEWS.md](NEWS.md)
+- Modify script to module-default.sh
+- Add Snapshot
+	- 	getCurrentFrame(Bitmap bitmap)  
+
+
 
 ### Features
 - Common
@@ -93,45 +95,6 @@ brew install yasm
 # on Cygwin (unmaintained)
 # install git, make, yasm
 ```
-
-- If you prefer more codec/format
-```
-cd config
-rm module.sh
-ln -s module-default.sh module.sh
-cd android/contrib
-# cd ios
-sh compile-ffmpeg clean
-```
-
-- If you prefer less codec/format for smaller binary size (include hevc function)
-```
-cd config
-rm module.sh
-ln -s module-lite-hevc.sh module.sh
-cd android/contrib
-# cd ios
-sh compile-ffmpeg clean
-```
-
-- If you prefer less codec/format for smaller binary size (by default)
-```
-cd config
-rm module.sh
-ln -s module-lite.sh module.sh
-cd android/contrib
-# cd ios
-sh compile-ffmpeg clean
-```
-
-- For Ubuntu/Debian users.
-```
-# choose [No] to use bash
-sudo dpkg-reconfigure dash
-```
-
-- If you'd like to share your config, pull request is welcome.
-
 ### Build Android
 ```
 git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
@@ -146,52 +109,10 @@ cd android/contrib
 
 cd ..
 ./compile-ijk.sh all
-
-# Android Studio:
-#     Open an existing Android Studio project
-#     Select android/ijkplayer/ and import
-#
-#     define ext block in your root build.gradle
-#     ext {
-#       compileSdkVersion = 23       // depending on your sdk version
-#       buildToolsVersion = "23.0.0" // depending on your build tools version
-#
-#       targetSdkVersion = 23        // depending on your sdk version
-#     }
-#
-# Eclipse: (obselete)
-#     File -> New -> Project -> Android Project from Existing Code
-#     Select android/ and import all project
-#     Import appcompat-v7
-#     Import preference-v7
-#
-# Gradle
-#     cd ijkplayer
-#     gradle
-
 ```
 
-
-### Build iOS
-```
-git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-ios
-cd ijkplayer-ios
-git checkout -B latest k0.5.1
-
-./init-ios.sh
-
-cd ios
-./compile-ffmpeg.sh clean
-./compile-ffmpeg.sh all
-
-# import ios/IJKMediaPlayer for MediaPlayer.framework-like interface (recommended)
-# open ios/IJKMediaDemo/IJKMediaDemo.xcodeproj with Xcode
-```
-
-
-### Support (支持) ###
+### Support ###
 - Please do not send e-mail to me. Public technical discussion on github is preferred.
-- 请尽量在 github 上公开讨论[技术问题](https://github.com/bilibili/ijkplayer/issues)，不要以邮件方式私下询问，恕不一一回复。
 
 
 ### License
