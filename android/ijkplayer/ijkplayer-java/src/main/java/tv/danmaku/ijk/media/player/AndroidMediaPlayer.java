@@ -19,6 +19,7 @@ package tv.danmaku.ijk.media.player;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.MediaDataSource;
 import android.media.MediaPlayer;
@@ -232,6 +233,11 @@ public class AndroidMediaPlayer extends AbstractMediaPlayer {
             DebugLog.printStackTrace(e);
             return 0;
         }
+    }
+
+    @Override
+    public boolean getCurrentFrame(Bitmap bitmap) {
+        return false;
     }
 
     @Override

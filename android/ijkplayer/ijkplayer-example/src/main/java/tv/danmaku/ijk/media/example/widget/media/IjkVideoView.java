@@ -20,6 +20,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -771,6 +772,13 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
 
     public void resume() {
         openVideo();
+    }
+
+    public boolean getCurrentFrame(Bitmap bitmap) {
+        if (mMediaPlayer != null) {
+            return mMediaPlayer.getCurrentFrame(bitmap);
+        }
+        return false;
     }
 
     @Override

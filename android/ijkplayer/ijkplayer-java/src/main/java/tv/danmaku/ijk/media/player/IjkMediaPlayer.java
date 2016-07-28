@@ -22,6 +22,7 @@ import android.annotation.TargetApi;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
@@ -635,6 +636,9 @@ public final class IjkMediaPlayer extends AbstractMediaPlayer {
 
     @Override
     public native void seekTo(long msec) throws IllegalStateException;
+
+    @Override
+    public native boolean getCurrentFrame(Bitmap bitmap);
 
     @Override
     public native long getCurrentPosition();

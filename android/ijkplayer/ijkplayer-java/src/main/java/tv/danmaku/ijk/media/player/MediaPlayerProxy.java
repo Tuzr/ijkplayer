@@ -18,6 +18,7 @@ package tv.danmaku.ijk.media.player;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.view.Surface;
@@ -129,6 +130,14 @@ public class MediaPlayerProxy implements IMediaPlayer {
     @Override
     public void seekTo(long msec) throws IllegalStateException {
         mBackEndMediaPlayer.seekTo(msec);
+    }
+
+    @Override
+    public boolean getCurrentFrame(Bitmap bitmap) {
+        if (mBackEndMediaPlayer != null) {
+            return mBackEndMediaPlayer.getCurrentFrame(bitmap);
+        }
+        return false;
     }
 
     @Override

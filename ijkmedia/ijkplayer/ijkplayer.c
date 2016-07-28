@@ -598,6 +598,20 @@ long ijkmp_get_current_position(IjkMediaPlayer *mp)
     return retval;
 }
 
+static void ijkmp_get_current_frame_l(IjkMediaPlayer *mp, uint8_t *frame_buf)
+{
+  ffp_get_current_frame_l(mp->ffplayer, frame_buf);
+}
+ 
+void ijkmp_get_current_frame(IjkMediaPlayer *mp, uint8_t *frame_buf)
+{
+  assert(mp);
+  pthread_mutex_lock(&mp->mutex);
+  ijkmp_get_current_frame_l(mp, frame_buf);
+  pthread_mutex_unlock(&mp->mutex);
+}
+
+
 static long ijkmp_get_duration_l(IjkMediaPlayer *mp)
 {
     return ffp_get_duration_l(mp->ffplayer);
